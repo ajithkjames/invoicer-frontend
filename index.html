@@ -3,20 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Invoice Generator</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="assets/css/style.css" />
 	<script src="assets/js/jquery-3.2.0.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
     <script src="app/app.js"></script>
-
+    <script src="app/controller.js"></script>
+    <script src="app/services.js"></script>
 
     
   </head>
   <body ng-app="invoices" ng-controller="InvoiceCtrl" >
   <div class="container">
-	  <div class="papers col-xs-9" id="invoice" >
+	  <div class="papers col-xs-12" id="invoice" >
 	    <div class="row branding">
 	      <div class="col-xs-6">
 	        <div class="invoice-number-container">
@@ -38,13 +39,13 @@
 	      	</div>
 	      </div>
 	      <div class="currency col-xs-6" data-ng-hide='printMode'>
-	          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies' style="form-control"></select>
+	          <select ng-model='currencySymbol' ng-options='currency.symbol as currency.name for currency in availableCurrencies' class="form-control" style="border: 1px solid #ccc;"></select>
 	       </div>
 	    </div>
-	    <div class="infos">
+	    <div class="row infos">
 	      <div class="col-xs-6">
 	      	<div class="input-container">
-	     		<textarea class="form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.customer_info.content" tabindex="15" required="" expanding-textarea="" style="position: absolute; height: 100px; resize: none; width: 95%;">
+	     		<textarea class="form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.customer_info.content" tabindex="15" required="" expanding-textarea="" style=" height: 100px; resize: none; width: 95%;">
 	     		
 	     		</textarea>
 	     	</div>
@@ -52,10 +53,21 @@
 	      </div>
 	      <div class="col-xs-6 right">
 	      	<div class="input-container">
-	     		<textarea class="form-control ng-required ng-touched" placeholder="Who is this invoice from? (required)" ng-model="invoice.company_info.content" tabindex="15" required="" expanding-textarea="" style="position: absolute; height: 100px; resize: none; width: 95%;">
+	     		<textarea class="form-control ng-required ng-touched" placeholder="Who is this invoice from? (required)" ng-model="invoice.company_info.content" tabindex="15" required="" expanding-textarea="" style=" height: 100px; resize: none; width: 95%;">
 	     		
 	     		</textarea>
 	     	</div>
+	      </div>
+	      <div class="col-xs-6">
+		      <div class="input-container">Date:
+		      	<input  type="date" class="form-control" ng-model="invoice.date" placeholder="Date" >
+	      		</div>
+	      		
+	      </div>
+	      <div class="col-xs-6">
+	      		<div class="input-container">Due Date :
+		      	<input  type="date" class="form-control"  ng-model="invoice.due" placeholder="Due Date" >
+	      		</div>
 	      </div>
 	    </div>
 	    <div class="items-table">
@@ -93,7 +105,7 @@
 	        <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
 	      </div>
 	      <div class="row">
-	        <div class="col-xs-10 text-right">Tax(%): <input ng-model="invoice.tax" ng-validate="number" style="width:43px"></div>
+	        <div class="col-xs-10 text-right">Tax(%): <input  class="form-control" ng-model="invoice.tax" ng-validate="number" style="width:43px; display: inline;"></div>
 	        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
 	      </div>
 	      <div class="row">
@@ -101,15 +113,12 @@
 	        <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
 	      </div>
 	    </div>
-	    
-	  </div>
-	  <div class="col-xs-3 sidebar">
-	  	<div class="row noPrint actions">
-	      <div><a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a></div>
-	      <div><a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a></div>
-	      <div><a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a></div>
-	      <div><a href="#" class="btn btn-primary" ng-click="clearLocalStorage()">Reset</a></div>
-	    </div>
+	    <div class="row noPrint actions">
+      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
+      <a href="#" class="btn btn-primary" ng-click="clearLocalStorage()">Reset</a>
+      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Turn On Print Mode</a>
+      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Turn Off Print Mode</a>
+    </div>
 	  </div>
   </div>
  

@@ -105,9 +105,7 @@ body{
   padding:20px;
 }
 
-.infos input{
-  width: 300px;
-}
+
 
 .align-right input{
   text-align:right;
@@ -190,9 +188,7 @@ body{
     color: #777;
 }
 
-.infos{
-  height: 140px;
-}
+
 
 .input-container{
   padding-top: 4px;
@@ -202,18 +198,10 @@ body{
   padding-top: 20px;
 }
 
-.sidebar{
-  text-align: center;
-
-}
-.sidebar div {
-  margin-top: 10px;
+div.container{
+  width: 800px;
 }
 
-.container{
-  background-color: #ddd;
-}
-
-#invoice{
-  background-color: #fff;
+.form-control{
+  border: none;
 }
