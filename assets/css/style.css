@@ -147,13 +147,13 @@ body{
 .remove-logo {
     position: absolute;
     display: block;
-    top: 5px;
-    left: 5px;
+    top: 0px;
+    right: 7px;
     padding: 0 5px;
     text-align: center;
     border-radius: 3px;
     color: #fff;
-    background: #3a3a3a;
+    background: #d9534f;
     box-shadow: none;
     border: none;
 }
