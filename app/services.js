@@ -19,6 +19,8 @@ invoices.service('LocalStorage', [function() {
 
   Service.setLogo = function(logo) {
     localStorage['logo'] = logo;
+    location.reload();
+    
   };
 
   // Checks to see if an invoice is stored

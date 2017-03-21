@@ -5,7 +5,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
 
   // Set defaults
   $scope.currencySymbol = '\u20B9';
-  $scope.logoRemoved = false;
+  $scope.logoPresent = true;
   $scope.printMode   = false;
   $scope.additionalTax   = false;
 
@@ -19,7 +19,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
     // Set logo to the one from local storage or use default
     !function() {
       var logo = LocalStorage.getLogo();
-      $scope.logo = logo ? logo : DEFAULT_LOGO;
+      $scope.logo = logo ? logo : '';
     }();
 
     $scope.availableCurrencies = Currency.all();
@@ -33,15 +33,15 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
      $scope.additionalTax   = !$scope.additionalTax;
   }
   // Toggle's the logo
-  $scope.toggleLogo = function(element) {
-    $scope.logoRemoved = !$scope.logoRemoved;
+  $scope.removeLogo = function(element) {
     LocalStorage.clearLogo();
+    $scope.logo = '';
   };
 
   // Triggers the logo chooser click event
   $scope.editLogo = function() {
     // angular.element('#imgInp').trigger('click');
-    $scope.logoRemoved = !$scope.logoRemoved;
+
     document.getElementById('imgInp').click();
   };
 
@@ -93,7 +93,13 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
     saveInvoice();
     return $scope.calculateTax() + $scope.calculateTax1() + $scope.invoiceSubTotal();
   };
-
+$scope.setLogo = function(logo) {
+    localStorage['logo'] = logo;
+    var logo = LocalStorage.getLogo();
+      $scope.logo = logo ? logo : '';
+    console.log("done ",$scope.logo)
+    location.reload();
+  };
   // Clears the local storage
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
@@ -116,7 +122,8 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
       var reader = new FileReader();
       reader.onload = function (e) {
         document.getElementById('company_logo').setAttribute('src', e.target.result);
-        LocalStorage.setLogo(e.target.result);
+        $scope.setLogo(e.target.result);
+        console.log("sds")
       }
       reader.readAsDataURL(input.files[0]);
 

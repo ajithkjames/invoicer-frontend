@@ -213,3 +213,7 @@ div.container{
 .totals{
   line-height: 35px;
 }
+
+.form-control[disabled]{
+  background: #fff;
+}

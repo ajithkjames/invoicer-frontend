@@ -1,7 +1,7 @@
 var invoices=angular.module('invoices', [])
 
 // The default logo for the invoice
-.constant('DEFAULT_LOGO', 'assets/images/spark.png')
+.constant('DEFAULT_LOGO', 'assets/images/logo.jpg')
 
 // The invoice displayed when the user first uses the app
 .constant('DEFAULT_INVOICE', {
@@ -10,7 +10,7 @@ var invoices=angular.module('invoices', [])
   notes:'',
   terms:'',
   tax_titile:'tax(%)',
-  tax: 10.00,
+  tax: 0.00,
   tax1_titile:'Additional taxes(%)',
   tax1: 0.00,
   invoice_number: 1,
@@ -23,7 +23,7 @@ var invoices=angular.module('invoices', [])
     
   },
   items:[
-    { qty: 1, description: 'item description', cost: 10 }
+    { qty: 1, description: '', cost: 0 }
   ]
 })
 
