@@ -48,6 +48,8 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.printInfo = function() {
     window.print();
   };
+
+  //Download the invoice as pdf
   $scope.pdf= function() {
   html2canvas(document.getElementById('invoice'), {
             onrendered: function (canvas) {
@@ -60,7 +62,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
                     }],
                   pageSize: 'A4',
                 };
-                pdfMake.createPdf(docDefinition).download("Score_Details.pdf");
+                pdfMake.createPdf(docDefinition).download("invoice.pdf");
             }
         });
   };
@@ -97,6 +99,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
     if(confirmClear) {
       LocalStorage.clear();
+      location.reload();
       setInvoice(DEFAULT_INVOICE);
     }
   };
