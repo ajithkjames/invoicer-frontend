@@ -116,7 +116,7 @@
 	      </div>
 	      <div class="row totals">
 	        <div class="col-xs-10 text-right"><input  class="form-control" ng-model="invoice.tax_titile"  style="width:150px; display: inline;">: <input  class="form-control" ng-model="invoice.tax" ng-validate="number" style="width:43px; display: inline;"><br/>
-	        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax" >+ Add Additional Tax</a>
+	        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax || printMode" >+ Add Additional Tax</a>
 	        </div>
 	        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
 	      </div>
