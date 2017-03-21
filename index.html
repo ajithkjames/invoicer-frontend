@@ -121,7 +121,7 @@
 	        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
 	      </div>
 	      <div class="row totals" ng-show="additionalTax">
-	        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="addAdditionalTax()" class="btn btn-danger">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;">: <input  class="form-control" ng-model="invoice.tax1" style="width:43px; display: inline;">
+	        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="addAdditionalTax()" class="btn btn-warning">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;">: <input  class="form-control" ng-model="invoice.tax1" style="width:43px; display: inline;">
 	        </div>
 	        <div class="col-xs-2 text-right">{{calculateTax1() | currency: currencySymbol}}</div>
 	      </div>

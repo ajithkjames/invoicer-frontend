@@ -23,7 +23,7 @@ var invoices=angular.module('invoices', [])
     
   },
   items:[
-    { qty: 1, description: 'item description', cost: 1 }
+    { qty: 1, description: 'item description', cost: 10 }
   ]
 })
 

@@ -27,7 +27,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   })()
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    $scope.invoice.items.push({ qty:0, cost:0, description:"" });
+    $scope.invoice.items.push({ qty:1, cost:0, description:"" });
   }
   $scope.addAdditionalTax=function() {
      $scope.additionalTax   = !$scope.additionalTax;
