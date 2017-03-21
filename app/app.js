@@ -7,6 +7,8 @@ var invoices=angular.module('invoices', [])
 .constant('DEFAULT_INVOICE', {
   date:'',
   due:'',
+  notes:'',
+  terms:'',
   tax: 10.00,
   invoice_number: 1,
   customer_info: {

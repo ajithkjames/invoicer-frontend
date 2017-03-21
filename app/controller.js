@@ -45,7 +45,22 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.printInfo = function() {
     window.print();
   };
-
+  $scope.pdf= function() {
+  html2canvas(document.getElementById('invoice'), {
+            onrendered: function (canvas) {
+                var data = canvas.toDataURL();
+                var docDefinition = {
+                    
+                    content: [{
+                        image: data,
+                        width: 500,
+                    }],
+                  pageSize: 'A4',
+                };
+                pdfMake.createPdf(docDefinition).download("Score_Details.pdf");
+            }
+        });
+  };
   // Remotes an item from the invoice
   $scope.removeItem = function(item) {
     $scope.invoice.items.splice($scope.invoice.items.indexOf(item), 1);
@@ -114,5 +129,6 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
       readUrl(this);
     };
   });
+
 
 }])

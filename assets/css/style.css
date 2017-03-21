@@ -31,7 +31,9 @@
     opacity:0;
     height:0px;
 }
-
+@page {
+  size: A4;
+}
 
 .invoice-number-container * {
   font-weight:bold;
@@ -45,6 +47,7 @@
 }
 .actions {
   padding-top:1em;
+  margin-top:10px;
 }
 input:focus {
   outline: 0;
@@ -137,6 +140,7 @@ body{
 
 
 .papers{
+    margin-top: 15px;
     padding: 20px;
     border: 1px solid #ccc;
     -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.1), 3px 3px 0 #fff, 4px 4px 0 rgba(0,0,0,.125), 6px 6px 0 #fff, 7px 7px 0 rgba(0,0,0,.15);
