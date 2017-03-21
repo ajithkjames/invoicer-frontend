@@ -7,6 +7,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.currencySymbol = '\u20B9';
   $scope.logoRemoved = false;
   $scope.printMode   = false;
+  $scope.additionalTax   = false;
 
   (function init() {
     // Attempt to load invoice from local storage
@@ -28,7 +29,9 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.addItem = function() {
     $scope.invoice.items.push({ qty:0, cost:0, description:"" });
   }
-
+  $scope.addAdditionalTax=function() {
+     $scope.additionalTax   = !$scope.additionalTax;
+  }
   // Toggle's the logo
   $scope.toggleLogo = function(element) {
     $scope.logoRemoved = !$scope.logoRemoved;
@@ -79,11 +82,14 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.calculateTax = function() {
     return (($scope.invoice.tax * $scope.invoiceSubTotal())/100);
   };
+  $scope.calculateTax1 = function() {
+    return (($scope.invoice.tax1 * $scope.invoiceSubTotal())/100);
+  };
 
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
     saveInvoice();
-    return $scope.calculateTax() + $scope.invoiceSubTotal();
+    return $scope.calculateTax() + $scope.calculateTax1() + $scope.invoiceSubTotal();
   };
 
   // Clears the local storage

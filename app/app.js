@@ -9,7 +9,10 @@ var invoices=angular.module('invoices', [])
   due:'',
   notes:'',
   terms:'',
+  tax_titile:'tax(%)',
   tax: 10.00,
+  tax1_titile:'Additional taxes(%)',
+  tax1: 0.00,
   invoice_number: 1,
   customer_info: {
     content: '',

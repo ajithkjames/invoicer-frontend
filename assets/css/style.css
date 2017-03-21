@@ -39,9 +39,9 @@
   font-weight:bold;
 }
 
-.items-table .row:nth-child(even) {
+/*.items-table .row:nth-child(even) {
   background:#f9f9f9;
-}
+}*/
 .items-table input {
   line-height:1.5em;
 }
@@ -208,4 +208,8 @@ div.container{
 
 .form-control{
   border: none;
+}
+
+.totals{
+  line-height: 35px;
 }
