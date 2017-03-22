@@ -8,14 +8,6 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.printMode   = false;
   $scope.additionalTax   = false;
   $scope.logo = '';
-  $scope.today = function() {
-      $scope.dt = new Date();
-    };
-  $scope.today();
-
-  $scope.clear = function() {
-    $scope.dt = null;
-  };
 
   (function init() {
     // Attempt to load invoice from local storage
@@ -124,8 +116,8 @@ $scope.setLogo = function(logo) {
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
     if(confirmClear) {
+      $scope.invoice=angular.copy(DEFAULT_INVOICE);
       LocalStorage.clear();
-      setInvoice(DEFAULT_INVOICE);
       $scope.logo = '';
     }
   };
