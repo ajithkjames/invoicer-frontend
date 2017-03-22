@@ -8,6 +8,14 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.printMode   = false;
   $scope.additionalTax   = false;
   $scope.logo = '';
+  $scope.today = function() {
+      $scope.dt = new Date();
+    };
+  $scope.today();
+
+  $scope.clear = function() {
+    $scope.dt = null;
+  };
 
   (function init() {
     // Attempt to load invoice from local storage
