@@ -17,12 +17,13 @@
 
     
   </head>
-  <body ng-app="invoices" ng-controller="InvoiceCtrl" id="invoice">
+  <body ng-app="invoices" ng-controller="InvoiceCtrl" >
   <div class="container" >
   	<div class="noPrint actions col-xs-12">
+  	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a>
-      <a href="#" class="btn btn-primary" ng-click="clearLocalStorage()">Reset</a>
+      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
       <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printMode = true;">Switch To Print Mode</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printMode = false;">Back To Edit Mode</a>
     </div>
@@ -143,6 +144,86 @@
 	      </div>
 	    
 	  </div>
+
+
+	   <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+        <div class="modal-content" modal-transclude="">
+        	<form name="emailForm" ng-submit="send(invoice,email)" class="email-form ">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">
+						Send Invoice
+					</h4>
+				</div>
+				<div class="modal-body form-horizontal">
+					<p class="alert alert-danger ng-binding ng-hide" ng-show="error"></p>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3">
+							To <span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<span class="input-group-addon">sds</span>
+								<input type="email" class="form-control" placeholder="Your client's email address" name="to" ng-model="email.to" required="">
+							</div>
+						</div>
+						<div class="col-sm-9 col-sm-offset-3 no-spam-label">
+							<span class="glyphicon glyphicon-lock"></span> We promise to never spam your client's email address. We hate spam just as much as you.
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3">
+							From <span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<div class="input-group">
+								<span class="input-group-addon ">sdfsd</span>
+								<input type="email" class="form-control" placeholder="Your email address" name="from" ng-model="email.from" required="">
+							</div>
+						</div>
+						<div class="col-sm-9 col-sm-offset-3 delivery-confirmation-label">
+							You will receive a delivery confirmation with a copy of your invoice.
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3">Subject</label>
+						<div class="col-sm-9 form-control-static ">
+							Invoice from <span ng-show="invoice.number" class="ng-binding">: # 8</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3">
+							Message <span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<div >
+								<textarea class="form-control" ng-model="email.message" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
+								</textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="attach-note">
+						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
+					</div>
+					<button type="submit" class="btn btn-primary Button ng-isolate-scope" ng-disabled="emailForm.$invalid||sending"><span>
+						Send
+					</span></button>
+				</div>
+			</form>
+		</div>
+    </div>  
+  </div>
+  </div>
 	  
   </div>
  

@@ -217,3 +217,24 @@ div.container{
 .form-control[disabled]{
   background: #fff;
 }
+
+.delivery-confirmation-label, .no-spam-label {
+    color: #777;
+    padding-top: 10px;
+    font-style: italic;
+}
+
+.required{
+  color: red;
+}
+
+.modal-content input{
+      border: 1px solid #ccc;
+}
+
+.attach-note {
+    line-height: 36px;
+    height: 36px;
+    color: #999;
+    float: left;
+}
