@@ -33,17 +33,17 @@
 	        <div class="invoice-number-container">
 	          <label for="invoice-number">Invoice Number</label><input  ng-disabled="printMode" class="form-control" type="text" id="invoice-number" ng-model="invoice.invoice_number" />
 	        </div>
-	      </div>
-	      <div class="logo" ng-show="logo">
+	      </div><input type="file" id="imgInp"  ng-disabled="printMode">
+	      <div id="logopresent" class="logo" ng-show="logo">
 	      	<button class="remove-logo"  ng-click="removeLogo()" ng-hide="printMode">
 				X
 			</button>
-	        <input type="file" id="imgInp" / ng-disabled="printMode">
-	        <img ng-click="editLogo()"  id="company_logo" data-ng-src="{{ logo }}" alt="your image" height="100px" style="float: right;" />
+	        
+	        <img ng-click="editLogo()"  id="company_logo" ng-src="{{ logo }}" alt="your image" height="100px" style="float: right;" />
 	        <div>
 	        </div>
 	      </div>
-	      <div class="logo-container" ng-hide="logo || printMode" ng-click="editLogo()">
+	      <div id ="setlogo" class="logo-container" ng-hide="logo || printMode" ng-click="editLogo()">
 	      	<div class="placeholder">
 	      	<span > + Add Your Logo</span>
 	      	</div>

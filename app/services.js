@@ -19,7 +19,6 @@ invoices.service('LocalStorage', [function() {
 
   Service.setLogo = function(logo) {
     localStorage['logo'] = logo;
-    location.reload();
     
   };
 

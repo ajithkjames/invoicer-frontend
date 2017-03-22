@@ -5,9 +5,9 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
 
   // Set defaults
   $scope.currencySymbol = '\u20B9';
-  $scope.logoPresent = true;
   $scope.printMode   = false;
   $scope.additionalTax   = false;
+  $scope.logo = '';
 
   (function init() {
     // Attempt to load invoice from local storage
@@ -93,20 +93,32 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
     saveInvoice();
     return $scope.calculateTax() + $scope.calculateTax1() + $scope.invoiceSubTotal();
   };
+
+ // Reads a url
+  var readUrl = function(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('company_logo').setAttribute('src', e.target.result);
+        $scope.setLogo(e.target.result);
+        $scope.$apply();
+      }
+      reader.readAsDataURL(input.files[0]);
+
+    }
+  };
+
 $scope.setLogo = function(logo) {
     localStorage['logo'] = logo;
-    var logo = LocalStorage.getLogo();
-      $scope.logo = logo ? logo : '';
-    console.log("done ",$scope.logo)
-    location.reload();
+      $scope.logo = logo ;
   };
   // Clears the local storage
   $scope.clearLocalStorage = function() {
     var confirmClear = confirm('Are you sure you would like to clear the invoice?');
     if(confirmClear) {
       LocalStorage.clear();
-      location.reload();
       setInvoice(DEFAULT_INVOICE);
+      $scope.logo = '';
     }
   };
 
@@ -116,19 +128,7 @@ $scope.setLogo = function(logo) {
     saveInvoice();
   };
 
-  // Reads a url
-  var readUrl = function(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        document.getElementById('company_logo').setAttribute('src', e.target.result);
-        $scope.setLogo(e.target.result);
-        console.log("sds")
-      }
-      reader.readAsDataURL(input.files[0]);
-
-    }
-  };
+ 
 
   // Saves the invoice in local storage
   var saveInvoice = function() {
