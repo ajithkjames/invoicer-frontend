@@ -12,8 +12,6 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   (function init() {
     // Attempt to load invoice from local storage
     !function() {
-      $scope.date=localStorage['logo'];
-      
       var invoice = LocalStorage.getInvoice();
       $scope.invoice = invoice ? invoice : DEFAULT_INVOICE;
       $scope.invoice.date=new Date($scope.invoice.date);
@@ -31,7 +29,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   })()
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    $scope.invoice.items.push({ qty:1, cost:0, description:"" });
+    $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
   }
   $scope.addAdditionalTax=function() {
      $scope.additionalTax   = !$scope.additionalTax;
