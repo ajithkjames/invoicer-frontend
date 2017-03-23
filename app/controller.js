@@ -12,8 +12,12 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   (function init() {
     // Attempt to load invoice from local storage
     !function() {
+      $scope.date=localStorage['logo'];
+      
       var invoice = LocalStorage.getInvoice();
       $scope.invoice = invoice ? invoice : DEFAULT_INVOICE;
+      $scope.invoice.date=new Date($scope.invoice.date);
+      $scope.invoice.due=new Date($scope.invoice.due);
     }();
 
     // Set logo to the one from local storage or use default
@@ -127,8 +131,6 @@ $scope.setLogo = function(logo) {
     $scope.invoice = invoice;
     saveInvoice();
   };
-
- 
 
   // Saves the invoice in local storage
   var saveInvoice = function() {

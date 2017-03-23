@@ -5,8 +5,8 @@ var invoices=angular.module('invoices', [])
 
 // The invoice displayed when the user first uses the app
 .constant('DEFAULT_INVOICE', {
-  date:null,
-  due:null,
+  date:new Date(),
+  due:new Date(),
   notes:'',
   terms:'',
   tax_titile:'tax(%)',
