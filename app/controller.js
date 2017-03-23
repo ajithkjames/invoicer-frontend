@@ -125,6 +125,16 @@ $scope.setLogo = function(logo) {
     }
   };
 
+  $scope.printmodeon = function(){
+      $scope.printMode = true;
+      angular.element('#printcontainer').css('width', '90%');
+  };
+
+  $scope.printmodeoff = function(){
+      $scope.printMode = false;
+      angular.element('#printcontainer').css('width', '800');
+  };
+
   // Sets the current invoice to the given one
   var setInvoice = function(invoice) {
     $scope.invoice = invoice;

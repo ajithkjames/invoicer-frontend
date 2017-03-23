@@ -98,10 +98,15 @@ input, textarea{
 
 
 
-body{
-
+@media print {
+    .noPrint {
+        display:none;
+    }
 }
 
+body{
+  padding:20px;
+}
 
 
 .align-right input{
