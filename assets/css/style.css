@@ -98,14 +98,8 @@ input, textarea{
 
 
 
-@media print {
-    .noPrint {
-        display:none;
-    }
-}
-
 body{
-  padding:20px;
+
 }
 
 
@@ -162,17 +156,18 @@ body{
     border: none;
 }
 .logo {
+    margin-top: -15px;
     cursor: pointer!important;
     text-align: left;
     position: relative;
     float: right;
-    width: 40%;
     display: table-cell;
     vertical-align: middle;
     overflow: hidden;
 }
 
 .logo-container {
+
     cursor: pointer!important;
     text-align: center;
     position: relative;

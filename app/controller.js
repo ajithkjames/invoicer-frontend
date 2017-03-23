@@ -60,9 +60,10 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
                     
                     content: [{
                         image: data,
-                        width: 500,
+                        width: 630,
                     }],
                   pageSize: 'A4',
+                  pageMargins: [ 0, 0, 0, 0 ],
                 };
                 pdfMake.createPdf(docDefinition).download("invoice.pdf");
             }

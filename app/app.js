@@ -9,6 +9,8 @@ var invoices=angular.module('invoices', [])
   due:new Date(),
   notes:'',
   terms:'',
+  from_text:'From',
+  to_text:'Bill To',
   tax_titile:'tax(%)',
   tax: 0.00,
   tax1_titile:'Additional taxes(%)',
