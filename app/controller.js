@@ -8,6 +8,11 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.printMode   = false;
   $scope.additionalTax   = false;
   $scope.logo = '';
+  $scope.to1='';
+  $scope.to='';
+  $scope.from='';
+  $scope.subject='Invoice ';
+  $scope.message='';
 
   (function init() {
     // Attempt to load invoice from local storage
@@ -71,6 +76,25 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
             }
         });
   };
+var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
+  $scope.send = function() {
+    console.log("here")
+    $http({
+      "method": "POST",
+      "url": "https://api.mailgun.net/v3/sandbox7106da0b6ed8488bb186182ed794df0f.mailgun.org/messages",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Authorization": "Basic " + mailgunApiKey
+      },
+      data: "from=" + $scope.to + "&to=" + $scope.to + "&subject=" + $scope.subject + "&html=" + "<a href="+$scope.message+">dfd</a>" + "&attachment" + $scope.logo ,
+    }).then(function(success) {
+      console.log("SUCCESS " + JSON.stringify(success));
+    }, function(error) {
+      console.log("ERROR " + JSON.stringify(error));
+    });
+  }
+
+
   // Remotes an item from the invoice
   $scope.removeItem = function(item) {
     $scope.invoice.items.splice($scope.invoice.items.indexOf(item), 1);
@@ -107,6 +131,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
         document.getElementById('company_logo').setAttribute('src', e.target.result);
         $scope.setLogo(e.target.result);
         $scope.$apply();
+
       }
       reader.readAsDataURL(input.files[0]);
 

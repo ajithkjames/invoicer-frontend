@@ -174,8 +174,8 @@
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group">
-								<span class="input-group-addon">sds</span>
-								<input type="email" class="form-control" placeholder="Your client's email address" name="to" ng-model="email.to" required="">
+								<span class="input-group-addon"></span>
+								<input type="email" class="form-control" placeholder="Your client's email address" name="to" ng-model="to" required="">
 							</div>
 						</div>
 						<div class="col-sm-9 col-sm-offset-3 no-spam-label">
@@ -189,8 +189,8 @@
 						</label>
 						<div class="col-sm-9">
 							<div class="input-group">
-								<span class="input-group-addon ">sdfsd</span>
-								<input type="email" class="form-control" placeholder="Your email address" name="from" ng-model="email.from" required="">
+								<span class="input-group-addon "></span>
+								<input type="email" class="form-control" placeholder="Your email address" name="from" ng-model="from" required="">
 							</div>
 						</div>
 						<div class="col-sm-9 col-sm-offset-3 delivery-confirmation-label">
@@ -211,7 +211,7 @@
 						</label>
 						<div class="col-sm-9">
 							<div >
-								<textarea class="form-control" ng-model="email.message" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
+								<textarea ng-model="message" class="form-control" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
 								</textarea>
 							</div>
 						</div>
@@ -221,9 +221,9 @@
 					<div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
 					</div>
-					<button type="submit" class="btn btn-primary Button ng-isolate-scope" ng-disabled="emailForm.$invalid||sending"><span>
+					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="send()"><span>
 						Send
-					</span></button>
+					</span></a>
 				</div>
 			</form>
 		</div>
