@@ -105,6 +105,7 @@ input, textarea{
 }
 
 body{
+
   padding:20px;
 }
 
@@ -139,9 +140,10 @@ body{
 
 
 .papers{
+  color: black;
     margin-top: 15px;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #777;
     -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.1), 3px 3px 0 #fff, 4px 4px 0 rgba(0,0,0,.125), 6px 6px 0 #fff, 7px 7px 0 rgba(0,0,0,.15);
     -moz-box-shadow: 1px 1px 0 rgba(0,0,0,.1),3px 3px 0 #fff,4px 4px 0 rgba(0,0,0,.125),6px 6px 0 #fff,7px 7px 0 rgba(0,0,0,.15);
     box-shadow: 1px 1px 0 rgba(0,0,0,.1), 3px 3px 0 #fff, 4px 4px 0 rgba(0,0,0,.125), 6px 6px 0 #fff, 7px 7px 0 rgba(0,0,0,.15);
@@ -204,6 +206,7 @@ body{
 
 div.container{
   width: 800px;
+
 }
 
 .form-control{
@@ -237,4 +240,8 @@ div.container{
     height: 36px;
     color: #999;
     float: left;
+}
+
+.X2{
+  transform: scale(2, 2);
 }

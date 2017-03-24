@@ -53,6 +53,7 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
 
   //Download the invoice as pdf
   $scope.pdf= function() {
+
   html2canvas(document.getElementById('invoice'), {
             onrendered: function (canvas) {
                 var data = canvas.toDataURL();
@@ -60,10 +61,11 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
                     
                     content: [{
                         image: data,
-                        width: 630,
+                        width: 600,
+                        height:600,
                     }],
                   pageSize: 'A4',
-                  pageMargins: [ 0, 0, 0, 0 ],
+                  pageMargins: [ 10, 0, 10, 0 ],
                 };
                 pdfMake.createPdf(docDefinition).download("invoice.pdf");
             }
