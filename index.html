@@ -10,7 +10,6 @@
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/html2canvas.js"></script>
     <script src="assets/js/pdfmake.js"></script>
-    <script src="assets/js/autogrow.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controller.js"></script>
@@ -142,13 +141,13 @@
 	    <div class="terms row">
 	    <div class="col-xs-12">
 		      <div class="input-container">Notes :
-		      	<textarea autogrow  class="note form-control ng-required ng-touched" ng-model="invoice.notes"  style=" resize: none;" ng-disabled="printMode" style="font-size: 14px"></textarea>
+		      	<textarea rows="4"  class="limited form-control ng-required ng-touched" ng-model="invoice.notes"  style=" resize: none;" ng-disabled="printMode" style="font-size: 14px"></textarea>
 	      		</div>
 	      		
 	      </div>
 	      <div class="col-xs-12">
 	      		<div class="input-container">Terms :
-		      	<textarea autogrow class="note form-control ng-required ng-touched" ng-model="invoice.terms"  style="resize: none; margin-bottom: 20px; " ng-disabled="printMode" required=""></textarea>
+		      	<textarea rows="4" class="limited form-control ng-required ng-touched" ng-model="invoice.terms"  style="resize: none; margin-bottom: 20px; " ng-disabled="printMode" required=""></textarea>
 	      		</div>
 	      </div>
 	    </div>

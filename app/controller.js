@@ -159,7 +159,6 @@ $scope.setLogo = function(logo) {
     angular.element('.form-control').css({'font-size': '20px','color':'black'});
     angular.element('#paper').css('font-size', '20px');
     angular.element('#items').addClass('items-table');
-    angular.element('.note').css('font-size', '14px');
 
   };
 
