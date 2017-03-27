@@ -34,7 +34,12 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   })()
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
+    if ($scope.invoice.items.length < 13 ){
+      $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
+    }
+    else{
+      window.alert("Can't add more than 10 items!");
+    }
   }
   $scope.addAdditionalTax=function() {
      $scope.additionalTax   = !$scope.additionalTax;
@@ -52,10 +57,6 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
     document.getElementById('imgInp').click();
   };
 
-  $scope.printInfo = function() {
-    window.print();
-  };
-
   //Download the invoice as pdf
   $scope.pdf= function() {
 
@@ -66,11 +67,11 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
                     
                     content: [{
                         image: data,
-                        width: 600,
-                        height:600,
+                        width: 580,
+                       
                     }],
                   pageSize: 'A4',
-                  pageMargins: [ 10, 0, 10, 0 ],
+                  pageMargins: [ 20, 0, 10, 20 ],
                 };
                 pdfMake.createPdf(docDefinition).download("invoice.pdf");
             }
@@ -153,13 +154,25 @@ $scope.setLogo = function(logo) {
   };
 
   $scope.printmodeon = function(){
-      $scope.printMode = true;
-      angular.element('#printcontainer').css('width', '90%');
+    $scope.printMode = true;
+    angular.element('#printcontainer').css('width', '90%');
+    angular.element('.form-control').css({'font-size': '20px','color':'black'});
+    angular.element('#paper').css('font-size', '20px');
+    angular.element('#items').addClass('items-table');
   };
 
   $scope.printmodeoff = function(){
-      $scope.printMode = false;
-      angular.element('#printcontainer').css('width', '800');
+    $scope.printMode = false;
+    angular.element('#printcontainer').css('width', '800');
+    angular.element('#items').removeClass('items-table');
+    angular.element('.form-control').css({'font-size': '14px','color':'#555'});
+    angular.element('#paper').css('font-size', '14px')
+  };
+
+  $scope.printInfo = function() {
+    angular.element('#items').removeClass('items-table');
+    $scope.printmodeoff();
+    window.print();
   };
 
   // Sets the current invoice to the given one

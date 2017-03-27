@@ -65,11 +65,9 @@ input:focus {
   border-bottom:1px solid #ddd;
 }
 .infos .right {
-  text-align:right;
+  float:right;
 }
-.infos .right input {
-  text-align:right;
-}
+
 .infos .input-container {
   padding:3px 0;
 }
@@ -101,6 +99,9 @@ input, textarea{
 @media print {
     .noPrint {
         display:none;
+    }
+    .items-table{
+      height: 500px;
     }
 }
 
@@ -244,4 +245,17 @@ div.container{
 
 .X2{
   transform: scale(2, 2);
+}
+
+.items-table{
+  min-height: 1000px;
+}
+
+@media print {
+    .noPrint {
+        display:none;
+    }
+    .items-table{
+      height: 500px;
+    }
 }
