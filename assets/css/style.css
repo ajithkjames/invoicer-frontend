@@ -42,7 +42,7 @@
 /*.items-table .row:nth-child(even) {
   background:#f9f9f9;
 }*/
-.items-table input {
+.items input {
   line-height:1.5em;
 }
 .actions {
