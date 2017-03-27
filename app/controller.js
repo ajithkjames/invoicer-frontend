@@ -159,6 +159,8 @@ $scope.setLogo = function(logo) {
     angular.element('.form-control').css({'font-size': '20px','color':'black'});
     angular.element('#paper').css('font-size', '20px');
     angular.element('#items').addClass('items-table');
+    angular.element('.note').css('font-size', '14px');
+
   };
 
   $scope.printmodeoff = function(){
@@ -166,7 +168,8 @@ $scope.setLogo = function(logo) {
     angular.element('#printcontainer').css('width', '800');
     angular.element('#items').removeClass('items-table');
     angular.element('.form-control').css({'font-size': '14px','color':'#555'});
-    angular.element('#paper').css('font-size', '14px')
+    angular.element('#paper').css('font-size', '14px');
+
   };
 
   $scope.printInfo = function() {

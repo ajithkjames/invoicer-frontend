@@ -1,4 +1,4 @@
-var invoices=angular.module('invoices', [])
+var invoices=angular.module('invoices',  ["angular-autogrow"])
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'assets/images/logo.jpg')
@@ -28,6 +28,5 @@ var invoices=angular.module('invoices', [])
     { qty: 1, description: '', cost: 0 }
   ]
 })
-
 
 
