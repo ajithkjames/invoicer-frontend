@@ -1,0 +1,291 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"te",
+				"text-right"
+			],
+			[
+				"local",
+				"localStorage"
+			],
+			[
+				"fo",
+				"form-control"
+			],
+			[
+				"paddi",
+				"padding-bottom"
+			],
+			[
+				"paddin",
+				"padding-top"
+			],
+			[
+				"margi",
+				"margin-top"
+			],
+			[
+				"lo",
+				"login_required"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/ajithj/invoice-generator/app/controller.js",
+		"/home/ajithj/invoice-generator/index.html",
+		"/home/ajithj/Desktop/curl -s --user 'api:key-383ffc4268c727ba91d347058d",
+		"/home/ajithj/invoice-generator/assets/css/style.css",
+		"/home/ajithj/Desktop/index.html",
+		"/home/ajithj/invoice-generator/assets/js/vfs_fonts.js",
+		"/home/ajithj/invoice-generator/assets/js/angular.min.js",
+		"/home/ajithj/invoice-generator/assets/js/pdfmake.js",
+		"/home/ajithj/invoice-generator/assets/js/textarea.js",
+		"/home/ajithj/Desktop/invoice-generator/index.html",
+		"/home/ajithj/Desktop/invoice-generator/app/services.js",
+		"/home/ajithj/Desktop/invoice-generator/app/controller.js",
+		"/home/ajithj/Desktop/invoice-generator/app/app.js",
+		"/home/ajithj/invoice-generator/app/services.js",
+		"/home/ajithj/Downloads/angular-invoicing-master/css/style.css",
+		"/home/ajithj/Downloads/angular-invoicing-master/js/main.js",
+		"/home/ajithj/Downloads/angular-invoicing-master/index.html",
+		"/home/ajithj/quizzer/quiz/templates/student-home.html",
+		"/home/ajithj/quizzer/quiz/urls.py",
+		"/home/ajithj/quizzer/quizzer/settings.py",
+		"/home/ajithj/quizzer/quiz/apiviews.py",
+		"/home/ajithj/quizzer/static/js/controllers.js",
+		"/home/ajithj/quizzer/quiz/templates/base.html",
+		"/home/ajithj/quizzer/quiz/serializers.py",
+		"/home/ajithj/quizzer/quiz/views.py",
+		"/home/ajithj/quizzer/quiz/models.py",
+		"/home/ajithj/quizzer/quizzer/urls.py",
+		"/home/ajithj/quizzer/quiz/templates/studentdetails.html",
+		"/home/ajithj/quizzer/quiz/forms.py",
+		"/home/ajithj/quizzer/quiz/templates/schools.html",
+		"/home/ajithj/quizzer/quiz/templates/cities.html",
+		"/home/ajithj/quizzer/quiz/templates/leadersschool.html",
+		"/home/ajithj/quizzer/quiz/templates/leaderscity.html",
+		"/home/ajithj/quizzer/quiz/templates/leaders.html",
+		"/home/ajithj/quizzer/quiz/api/urls.py",
+		"/home/ajithj/quizzer/quiz/api/views.py",
+		"/home/ajithj/quizzer/quiz/api/serializers.py",
+		"/home/ajithj/quizzer/quiz/templates/mystudents.html",
+		"/home/ajithj/quizzer/quiz/templates/teacher-home.html",
+		"/home/ajithj/quizzer/quiz/templates/quiz-details.html",
+		"/home/ajithj/quizzer/quiz/templates/quiz-ongoing.html",
+		"/home/ajithj/quizzer/quiz/templates/profile_form.html",
+		"/home/ajithj/quizzer/quiz/templates/profile.html",
+		"/home/ajithj/quizzer/quiz/templates/login.html",
+		"/home/ajithj/quizzer/quiz/templates/create-quiz.html",
+		"/home/ajithj/quizzer/quiz/templates/createprofile.html",
+		"/home/ajithj/quizzer/quiz/templates/myresults.html",
+		"/home/ajithj/quizzer/quiz/templates/result.html",
+		"/home/ajithj/quizzer/quiz/admin.py",
+		"/home/ajithj/stamp/orders/templates/signup.html",
+		"/home/ajithj/quizzer/quiz/templates/signup.html",
+		"/home/ajithj/quizzer/quiz/templates/access_check.html",
+		"/home/ajithj/quizzer/quiz/templates/allattempts.html",
+		"/home/ajithj/quizzer/quiz/mixins.py",
+		"/home/ajithj/quizzer/quiz/templates/leader-board.html",
+		"/home/ajithj/stamp/stamp/urls.py",
+		"/home/ajithj/Desktop/route del default;"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"/home/ajithj/invoice-generator/app",
+			"/home/ajithj/invoice-generator"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"prin",
+			"printmodeon()",
+			"rintmodeon()",
+			"send",
+			"html",
+			"email",
+			"setInvoice",
+			" saveInvoice",
+			"saveInvoice",
+			"getInvoice",
+			"hasInvoice",
+			"saveInvoice",
+			"clear",
+			"imgInp",
+			"saveInvoice",
+			"setInvoice",
+			"<input",
+			"input",
+			"ng-disabled=\"printMode\"",
+			"setInvoice",
+			"DEFAULT_INVOICE",
+			"date",
+			"datefmt",
+			"logo",
+			"clear the invoice?",
+			"invoi",
+			"body",
+			"info",
+			"tax",
+			"logoRemoved",
+			"printInfo",
+			"printInfo()",
+			"currency",
+			"availableCurrencies",
+			"{{",
+			"quiz-detail"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "invoice-generator.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

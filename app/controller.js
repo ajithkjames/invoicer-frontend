@@ -1,7 +1,7 @@
 // Main application controller
 
-invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
-  function($scope, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
+invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
+  function($scope, $sce, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
 
   // Set defaults
   $scope.currencySymbol = '\u20B9';
@@ -103,6 +103,29 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
     });
   }
 
+  $scope.getpdf = function() {
+
+    $http({
+        url: 'http://192.168.1.105:8000/pdf',
+        method: "POST",
+        data: { "customer" : $scope.invoice.customer_info.content },
+        responseType: 'arraybuffer',
+        headers: {
+        "Content-Type": "application/json",
+        }
+       
+    })
+   .then(function successCallback(response) {
+             var blob = new Blob([response.data], {type: 'application/pdf'});
+             var fileURL = URL.createObjectURL(blob);
+             var a = document.createElement("a");
+            var fileName = "invoice.pdf";
+            a.href = fileURL;
+            a.download = fileName;
+                a.click();
+        }, function errorCallback(response) {   
+        });
+  }
 
   // Remotes an item from the invoice
   $scope.removeItem = function(item) {
