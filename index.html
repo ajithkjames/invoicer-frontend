@@ -139,17 +139,23 @@
 	      </div>
 	      </div>
 	    <div class="terms row">
-	    <div class="col-xs-12">
-		      <div class="input-container">Notes :
+    		<a class="btn" href ng-click="addNotes() " ng-hide="notes || printMode" >+ Add Notes</a>
+	    	<div class="col-xs-12" ng-show="notes">
+		       <div class="input-container">
+		       <a href ng-hide="printMode" ng-click="addNotes()" class="btn btn-warning">X</a>
+		       Notes :
 		      	<textarea rows="4"  class="limited form-control ng-required ng-touched" ng-model="invoice.notes"  style=" resize: none;" ng-disabled="printMode" style="font-size: 14px" maxlength="115" placeholder="maximum characters 500"></textarea>
 	      		</div>
-	      		
-	      </div>
-	      <div class="col-xs-12">
-	      		<div class="input-container">Terms :
+	      	</div>
+	      	<br/>
+	      	<a class="btn" href ng-click="addTerms()" ng-hide="terms || printMode" >+ Add Terms</a>
+	      	<div class="col-xs-12" ng-show="terms"> 
+	      		<div class="input-container">
+	      		<a href ng-hide="printMode" ng-click="addTerms()" class="btn btn-warning">X</a>
+	      		Terms :
 		      	<textarea rows="4" class="limited form-control ng-required ng-touched" ng-model="invoice.terms"  style="resize: none; margin-bottom: 20px; " ng-disabled="printMode" required="" maxlength="115" placeholder="maximum characters 500"></textarea>
-	      		</div>
-	      </div>
+      			</div>
+	        </div>
 	    </div>
 	  </div>
 

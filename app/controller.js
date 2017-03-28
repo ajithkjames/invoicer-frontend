@@ -7,6 +7,8 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   $scope.currencySymbol = '\u20B9';
   $scope.printMode   = false;
   $scope.additionalTax   = false;
+  $scope.notes   = false;
+  $scope.terms   = false;
   $scope.logo = '';
   $scope.to1='';
   $scope.to='';
@@ -43,6 +45,12 @@ invoices.controller('InvoiceCtrl', ['$scope', '$http', 'DEFAULT_INVOICE', 'DEFAU
   }
   $scope.addAdditionalTax=function() {
      $scope.additionalTax   = !$scope.additionalTax;
+  }
+  $scope.addNotes=function() {
+     $scope.notes   = !$scope.notes;
+  }
+  $scope.addTerms=function() {
+     $scope.terms   = !$scope.terms;
   }
   // Toggle's the logo
   $scope.removeLogo = function(element) {
