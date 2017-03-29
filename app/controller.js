@@ -131,6 +131,7 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
         "grandtotal":$scope.grandTotal,
         "notes":$scope.invoice.notes,
         "terms":$scope.invoice.terms,
+        "currency":$scope.currencySymbol,
         
         },
         responseType: 'arraybuffer',
