@@ -144,11 +144,36 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
              var blob = new Blob([response.data], {type: 'application/pdf'});
              var fileURL = URL.createObjectURL(blob);
              var a = document.createElement("a");
+             $scope.pdffile=fileURL;
+             console.log($scope.pdffile)
             var fileName = "invoice.pdf";
             a.href = fileURL;
             a.download = fileName;
                 a.click();
         }, function errorCallback(response) {   
+        });
+  }
+
+
+  $scope.email = function() {
+
+    $http({
+        url: 'http://192.168.1.105:8000/pdfmail',
+        method: "PUT",
+        data: { 
+        "file" : $scope.pdffile,
+        "filename": 'a.pdf'
+        },
+        responseType: 'arraybuffer',
+        headers: {
+        "Content-Type": "application/json",
+        }
+       
+    })
+   .then(function successCallback(response) {
+             console.log("sent")
+        }, function errorCallback(response) { 
+        console.log("fail")  
         });
   }
 
