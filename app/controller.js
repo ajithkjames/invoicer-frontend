@@ -29,6 +29,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     !function() {
       var logo = LocalStorage.getLogo();
       $scope.logo = logo ? logo : '';
+      console.log(logo)
     }();
 
     $scope.availableCurrencies = Currency.all();
@@ -47,10 +48,20 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
      $scope.additionalTax   = !$scope.additionalTax;
   }
   $scope.addNotes=function() {
+     $scope.invoice.notes='';
      $scope.notes   = !$scope.notes;
   }
+  $scope.removeNotes=function() {
+     $scope.invoice.notes='';
+     $scope.notes   = false;
+  }
   $scope.addTerms=function() {
+     $scope.invoice.terms='';
      $scope.terms   = !$scope.terms;
+  }
+  $scope.removeTerms=function() {
+     $scope.invoice.terms='';
+     $scope.terms   = false;
   }
   // Toggle's the logo
   $scope.removeLogo = function(element) {
@@ -108,7 +119,20 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
     $http({
         url: 'http://192.168.1.105:8000/pdf',
         method: "POST",
-        data: { "customer" : $scope.invoice.customer_info.content },
+        data: { 
+        "company" : $scope.invoice.company_info.content,
+        "customer" : $scope.invoice.customer_info.content,
+        "logo":$scope.logo, 
+        "items":$scope.invoice.items,
+        "subtotal":$scope.subtotal,
+        "taxtitle":$scope.invoice.tax_titile,
+        "tax":$scope.invoice.tax,
+        "taxamount":$scope.taxamount,
+        "grandtotal":$scope.grandTotal,
+        "notes":$scope.invoice.notes,
+        "terms":$scope.invoice.terms,
+        
+        },
         responseType: 'arraybuffer',
         headers: {
         "Content-Type": "application/json",
@@ -138,12 +162,14 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
     angular.forEach($scope.invoice.items, function(item, key){
       total += (item.qty * item.cost);
     });
+    $scope.subtotal=total;
     return total;
   };
 
   // Calculates the tax of the invoice
   $scope.calculateTax = function() {
-    return (($scope.invoice.tax * $scope.invoiceSubTotal())/100);
+    $scope.taxamount= $scope.invoice.tax * $scope.invoiceSubTotal()/100 ;
+    return $scope.taxamount;
   };
   $scope.calculateTax1 = function() {
     return (($scope.invoice.tax1 * $scope.invoiceSubTotal())/100);
@@ -152,7 +178,8 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
   // Calculates the grand total of the invoice
   $scope.calculateGrandTotal = function() {
     saveInvoice();
-    return $scope.calculateTax() + $scope.calculateTax1() + $scope.invoiceSubTotal();
+    $scope.grandTotal = $scope.calculateTax() + $scope.calculateTax1() + $scope.invoiceSubTotal()
+    return $scope.grandTotal;
   };
 
  // Reads a url
