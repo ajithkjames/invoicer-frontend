@@ -55,7 +55,6 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     !function() {
       var logo = LocalStorage.getLogo();
       $scope.logo = logo ? logo : '';
-      console.log(logo)
     }();
 
     $scope.availableCurrencies = Currency.all();
@@ -65,18 +64,13 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   var formdata = new FormData();
   $scope.getTheFiles = function ($files) {
-      
-      
-      console.log(formdata);
       angular.forEach($files, function (value, key) {
           formdata.append(key, value);
-           console.log(formdata);
-           console.log(key + ' ' + value.name);
       });
   };
 
   // NOW UPLOAD THE FILES.
-  $scope.uploadFiles = function () {
+  $scope.sendInvoice = function () {
       window.alert("Your invoice has been sent to "+$scope.to);
       window.location.reload();
       formdata.append('to', $scope.to);
@@ -84,14 +78,14 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
       formdata.append('message', $scope.message);
       var request = {
           method: 'POST',
-          url: 'http://192.168.1.105:8000/file',
+          url: 'http://192.168.1.105:8000/send',
           data: formdata,
           headers: {
               'Content-Type': undefined
           }
       };
 
-      // SEND THE FILES.
+      // SEND THE data.
       $http(request)
           .then(function(success) {
           console.log("SUCCESS " + JSON.stringify(success));
@@ -161,23 +155,6 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
             }
         });
   };
-var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
-  $scope.send = function() {
-    console.log("here")
-    $http({
-      "method": "POST",
-      "url": "https://api.mailgun.net/v3/sandbox7106da0b6ed8488bb186182ed794df0f.mailgun.org/messages",
-      "headers": {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Basic " + mailgunApiKey
-      },
-      data: "from=" + $scope.to + "&to=" + $scope.to + "&subject=" + $scope.subject + "&html=" + "<a href="+$scope.message+">dfd</a>" + "&attachment" + $scope.logo ,
-    }).then(function(success) {
-      console.log("SUCCESS " + JSON.stringify(success));
-    }, function(error) {
-      console.log("ERROR " + JSON.stringify(error));
-    });
-  }
 
   $scope.getpdf = function() {
 
@@ -210,35 +187,11 @@ var mailgunApiKey = window.btoa("api:key-383ffc4268c727ba91d347058d6c158a")
              var fileURL = URL.createObjectURL(blob);
              var a = document.createElement("a");
              $scope.pdffile=fileURL;
-             console.log($scope.pdffile)
             var fileName = "invoice.pdf";
             a.href = fileURL;
             a.download = fileName;
                 a.click();
         }, function errorCallback(response) {   
-        });
-  }
-
-
-  $scope.email = function() {
-
-    $http({
-        url: 'http://192.168.1.105:8000/pdfmail',
-        method: "PUT",
-        data: { 
-        "file" : $scope.pdffile,
-        "filename": 'a.pdf'
-        },
-        responseType: 'arraybuffer',
-        headers: {
-        "Content-Type": "application/json",
-        }
-       
-    })
-   .then(function successCallback(response) {
-             console.log("sent")
-        }, function errorCallback(response) { 
-        console.log("fail")  
         });
   }
 

@@ -22,7 +22,7 @@
   <div class="container" id="printcontainer">
   	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
   	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
-  	  <a href="#" class="btn btn-primary"  ng-click="getpdf()">getpdf</a>
+  	  <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="getpdf()">Get PDF</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a>
       <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
@@ -244,7 +244,7 @@
 					<!-- <div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
 					</div> -->
-					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="uploadFiles()" value="Upload"" data-toggle="modal"><span>
+					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
 						Send
 					</span></a>
 				</div>
