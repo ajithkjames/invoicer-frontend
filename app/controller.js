@@ -12,7 +12,19 @@ invoices.directive('ngFiles', ['$parse', function ($parse) {
                 link: fn_link
             }
         } ])
-
+.directive('validFile',function(){
+  return {
+    require:'ngModel',
+    link:function(scope,el,attrs,ngModel){
+      el.bind('change',function(){
+        scope.$apply(function(){
+          ngModel.$setViewValue(el.val());
+          ngModel.$render();
+        });
+      });
+    }
+  }
+});
 
 invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
   function($scope, $sce, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
@@ -27,8 +39,8 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
   $scope.to1='';
   $scope.to='';
   $scope.from='';
-  $scope.subject='Invoice ';
   $scope.message='';
+  $scope.invoicefile='';
 
   (function init() {
     // Attempt to load invoice from local storage
@@ -53,7 +65,9 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   var formdata = new FormData();
   $scope.getTheFiles = function ($files) {
-      console.log($files);
+      
+      
+      console.log(formdata);
       angular.forEach($files, function (value, key) {
           formdata.append(key, value);
            console.log(formdata);
@@ -63,7 +77,9 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // NOW UPLOAD THE FILES.
   $scope.uploadFiles = function () {
-
+      formdata.append('to', $scope.to);
+      formdata.append('from', $scope.from);
+      formdata.append('message', $scope.message);
       var request = {
           method: 'POST',
           url: 'http://192.168.1.105:8000/file',

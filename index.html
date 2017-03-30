@@ -18,10 +18,6 @@
     
   </head>
   <body ng-app="invoices" ng-controller="InvoiceCtrl" id="invoice">
-   <input type="file" id="file1" name="file" multiple
-            ng-files="getTheFiles($files)" />
-
-        <input type="button" ng-click="uploadFiles()" value="Upload" />
   <div >
   <div class="container" id="printcontainer">
   	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
@@ -215,7 +211,7 @@
 					<div class="form-group">
 						<label class="control-label col-sm-3">Subject</label>
 						<div class="col-sm-9 form-control-static ">
-							Invoice from <span ng-show="invoice.number" class="ng-binding">: # 8</span>
+							Invoice from {{from}} <span ng-show="invoice.number" class="ng-binding">: # 8</span>
 						</div>
 					</div>
 
@@ -230,12 +226,25 @@
 							</div>
 						</div>
 					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-3">
+							Attach The Invoice <span class="required">*</span>
+						</label>
+						<div class="col-sm-9">
+							<div >
+								<input class="form-control" ng-model="invoicefile" type="file" id="file1" name="file" multiple
+				            ng-files="getTheFiles($files)" valid-file ng-required="true" />
+							</div>
+						</div>
+					</div>
+				    
 				</div>
 				<div class="modal-footer">
 					<div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
 					</div>
-					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="send()"><span>
+					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="uploadFiles()" value="Upload""><span>
 						Send
 					</span></a>
 				</div>
