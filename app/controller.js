@@ -104,7 +104,11 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     }
   }
   $scope.addAdditionalTax=function() {
-     $scope.additionalTax   = !$scope.additionalTax;
+     $scope.additionalTax   = true;
+  }
+  $scope.removeAdditionalTax=function() {
+     $scope.invoice.tax1='';
+     $scope.additionalTax   = false;
   }
   $scope.addNotes=function() {
      $scope.invoice.notes='';
@@ -170,10 +174,14 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
         "taxtitle":$scope.invoice.tax_titile,
         "tax":$scope.invoice.tax,
         "taxamount":$scope.taxamount,
+        "taxtitle1":$scope.invoice.tax1_titile,
+        "tax1":$scope.invoice.tax1,
+        "taxamount1":$scope.taxamount1,
         "grandtotal":$scope.grandTotal,
         "notes":$scope.invoice.notes,
         "terms":$scope.invoice.terms,
         "currency":$scope.currencySymbol,
+        "additionaltax":$scope.additionalTax,
         
         },
         responseType: 'arraybuffer',
@@ -216,7 +224,8 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     return $scope.taxamount;
   };
   $scope.calculateTax1 = function() {
-    return (($scope.invoice.tax1 * $scope.invoiceSubTotal())/100);
+    $scope.taxamount1= $scope.invoice.tax1 * $scope.invoiceSubTotal()/100 ;
+    return $scope.taxamount1;
   };
 
   // Calculates the grand total of the invoice

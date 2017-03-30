@@ -125,12 +125,12 @@
 	      </div>
 	      <div class="row totals">
 	        <div class="col-xs-10 text-right"><input  class="form-control" ng-model="invoice.tax_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax"  style="width:63px; display: inline;" ng-disabled="printMode"><br/>
-	        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax || printMode" >+ Add Additional Tax</a>
+	        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax || printMode || invoice.tax1" >+ Add Additional Tax</a>
 	        </div>
 	        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
 	      </div>
-	      <div class="row totals" ng-show="additionalTax">
-	        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="addAdditionalTax()" class="btn btn-warning">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax1" style="width:63px; display: inline;" ng-disabled="printMode">
+	      <div class="row totals" ng-show="additionalTax || invoice.tax1">
+	        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="removeAdditionalTax()" class="btn btn-warning">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax1" style="width:63px; display: inline;" ng-disabled="printMode">
 	        </div>
 	        <div class="col-xs-2 text-right">{{calculateTax1() | currency: currencySymbol}}</div>
 	      </div>
