@@ -1,4 +1,18 @@
 // Main application controller
+invoices.directive('ngFiles', ['$parse', function ($parse) {
+
+            function fn_link(scope, element, attrs) {
+                var onChange = $parse(attrs.ngFiles);
+                element.on('change', function (event) {
+                    onChange(scope, { $files: event.target.files });
+                });
+            };
+
+            return {
+                link: fn_link
+            }
+        } ])
+
 
 invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
   function($scope, $sce, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
@@ -35,6 +49,39 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     $scope.availableCurrencies = Currency.all();
 
   })()
+
+
+  var formdata = new FormData();
+  $scope.getTheFiles = function ($files) {
+      console.log($files);
+      angular.forEach($files, function (value, key) {
+          formdata.append(key, value);
+           console.log(formdata);
+           console.log(key + ' ' + value.name);
+      });
+  };
+
+  // NOW UPLOAD THE FILES.
+  $scope.uploadFiles = function () {
+
+      var request = {
+          method: 'POST',
+          url: 'http://192.168.1.105:8000/file',
+          data: formdata,
+          headers: {
+              'Content-Type': undefined
+          }
+      };
+
+      // SEND THE FILES.
+      $http(request)
+          .then(function(success) {
+          console.log("SUCCESS " + JSON.stringify(success));
+          }, function(error) {
+          console.log("ERROR " + JSON.stringify(error));
+          });
+  }
+
   // Adds an item to the invoice's items
   $scope.addItem = function() {
     if ($scope.invoice.items.length < 13 ){

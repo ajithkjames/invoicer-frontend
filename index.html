@@ -18,6 +18,10 @@
     
   </head>
   <body ng-app="invoices" ng-controller="InvoiceCtrl" id="invoice">
+   <input type="file" id="file1" name="file" multiple
+            ng-files="getTheFiles($files)" />
+
+        <input type="button" ng-click="uploadFiles()" value="Upload" />
   <div >
   <div class="container" id="printcontainer">
   	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
