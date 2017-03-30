@@ -77,6 +77,8 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // NOW UPLOAD THE FILES.
   $scope.uploadFiles = function () {
+      window.alert("Your invoice has been sent to "+$scope.to);
+      window.location.reload();
       formdata.append('to', $scope.to);
       formdata.append('from', $scope.from);
       formdata.append('message', $scope.message);

@@ -23,7 +23,6 @@
   	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
   	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
   	  <a href="#" class="btn btn-primary"  ng-click="getpdf()">getpdf</a>
-  	  <a href="#" class="btn btn-primary"  ng-click="email()">email</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a>
       <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
@@ -183,9 +182,9 @@
 							To <span class="required">*</span>
 						</label>
 						<div class="col-sm-9">
-							<div class="input-group">
-								<span class="input-group-addon"></span>
-								<input type="email" class="form-control" placeholder="Your client's email address" name="to" ng-model="to" required="">
+							<div >
+								<span class="text-danger" ng-show="emailForm.to.$touched && emailForm.to.$invalid">A valid email is required here.</span>
+								<input type="email" class="modelinput" placeholder="Your client's email address" name="to" ng-model="to" required>
 							</div>
 						</div>
 						<div class="col-sm-9 col-sm-offset-3 no-spam-label">
@@ -198,9 +197,9 @@
 							From <span class="required">*</span>
 						</label>
 						<div class="col-sm-9">
-							<div class="input-group">
-								<span class="input-group-addon "></span>
-								<input type="email" class="form-control" placeholder="Your email address" name="from" ng-model="from" required="">
+							<div>
+								<span class="text-danger" ng-show="emailForm.from.$touched && emailForm.from.$invalid">A valid email is required here.</span>
+								<input type="email" class="modelinput" placeholder="Your email address" name="from" ng-model="from" required="">
 							</div>
 						</div>
 						<div class="col-sm-9 col-sm-offset-3 delivery-confirmation-label">
@@ -221,7 +220,8 @@
 						</label>
 						<div class="col-sm-9">
 							<div >
-								<textarea ng-model="message" class="form-control" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
+								<span class="text-danger" ng-show="emailForm.message.$touched && emailForm.message.$invalid">Type a message to be sent.</span>
+								<textarea ng-model="message" name="message" class="modelinput" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
 								</textarea>
 							</div>
 						</div>
@@ -233,7 +233,7 @@
 						</label>
 						<div class="col-sm-9">
 							<div >
-								<input class="form-control" ng-model="invoicefile" type="file" id="file1" name="file" multiple
+								<input class="modelinput" ng-model="invoicefile" type="file" id="file1" name="file" multiple
 				            ng-files="getTheFiles($files)" valid-file ng-required="true" />
 							</div>
 						</div>
@@ -241,10 +241,10 @@
 				    
 				</div>
 				<div class="modal-footer">
-					<div class="attach-note">
+					<!-- <div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
-					</div>
-					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="uploadFiles()" value="Upload""><span>
+					</div> -->
+					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="uploadFiles()" value="Upload"" data-toggle="modal"><span>
 						Send
 					</span></a>
 				</div>
