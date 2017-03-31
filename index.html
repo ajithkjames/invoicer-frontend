@@ -226,24 +226,12 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">
-							Attach The Invoice <span class="required">*</span>
-						</label>
-						<div class="col-sm-9">
-							<div >
-								<input class="modelinput" ng-model="invoicefile" type="file" id="file1" name="file" multiple
-				            ng-files="getTheFiles($files)" valid-file ng-required="true" />
-							</div>
-						</div>
-					</div>
 				    
 				</div>
 				<div class="modal-footer">
-					<!-- <div class="attach-note">
+					<div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
-					</div> -->
+					</div>
 					<span class="text-danger" ng-show="emailForm.$invalid">Complete the form to sent mail.</span>
 					<button class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
 						Send

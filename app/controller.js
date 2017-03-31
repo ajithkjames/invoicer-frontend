@@ -58,27 +58,40 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   })()
 
-
-  var formdata = new FormData();
-  $scope.getTheFiles = function ($files) {
-      angular.forEach($files, function (value, key) {
-          formdata.append(key, value);
-      });
-  };
-
-  // NOW UPLOAD THE FILES.
+  // Sending the invoice
   $scope.sendInvoice = function () {
       window.alert("Your invoice has been sent to "+$scope.to);
       window.location.reload();
-      formdata.append('to', $scope.to);
-      formdata.append('from', $scope.from);
-      formdata.append('message', $scope.message);
       var request = {
           method: 'POST',
           url: 'http://192.168.1.105:8000/send',
-          data: formdata,
+          data:{
+          "to": $scope.to,
+          "from": $scope.from,
+          "message": $scope.message,
+          "number":$scope.invoice.invoice_number, 
+          "from_text" : $scope.invoice.from_text,
+          "to_text" : $scope.invoice.to_text,
+          "company" : $scope.invoice.from,
+          "customer" : $scope.invoice.to,
+          "logo":$scope.logo, 
+          "items":$scope.invoice.items,
+          "subtotal":$scope.subtotal,
+          "taxtitle":$scope.invoice.tax_titile,
+          "tax":$scope.invoice.tax,
+          "taxamount":$scope.taxamount,
+          "taxtitle1":$scope.invoice.tax1_titile,
+          "tax1":$scope.invoice.tax1,
+          "taxamount1":$scope.taxamount1,
+          "grandtotal":$scope.grandTotal,
+          "notes":$scope.invoice.notes,
+          "terms":$scope.invoice.terms,
+          "currency":$scope.currencySymbol,
+          "additionaltax":$scope.additionalTax,
+          
+          },
           headers: {
-              'Content-Type': undefined
+              'Content-Type': "application/json"
           }
       };
 
