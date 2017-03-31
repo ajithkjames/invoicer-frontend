@@ -21,12 +21,12 @@
   <div >
   <div class="container" id="printcontainer">
   	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
+  	  <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="getpdf()">Download Invoice</a>
   	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
-  	  <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="getpdf()">Get PDF</a>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
-      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a>
+      <!-- <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a> -->
       <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
-      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printmodeon()">Switch To Print Mode</a>
+      <button href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printmodeon()">Switch To Print Mode</button>
       <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printmodeoff()">Back To Edit Mode</a>
     </div >
 	  <div class="row papers col-xs-12" id="paper">
@@ -61,7 +61,7 @@
 	      <div class="col-xs-4">
 	      	<div class="input-container">
 	      		<input type="text" class="form-control" ng-model="invoice.from_text" ng-disabled="printMode">
-	     		<textarea rows="4" id="to" class="limited form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.company_info.content" tabindex="15" required=""  style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
+	     		<textarea rows="4" id="to" class="limited form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.from" tabindex="15" required=""  style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
 	     		
 	     		</textarea>
 	     	</div>
@@ -70,7 +70,7 @@
 	      <div class="col-xs-4 right">
 	      	<div class="input-container">
 	      		<input type="text" class="form-control" ng-model="invoice.to_text" style="float: left;text-align: left;" ng-disabled="printMode">
-	     		<textarea rows="4" id="from" class="limited form-control ng-required ng-touched " placeholder="Who is this invoice from? (required)" ng-model="invoice.customer_info.content" tabindex="15" required="" style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
+	     		<textarea rows="4" id="from" class="limited form-control ng-required ng-touched " placeholder="Who is this invoice from? (required)" ng-model="invoice.to" tabindex="15" required="" style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
 	     		
 	     		</textarea>
 	     	</div>
@@ -82,7 +82,7 @@
 	      		</div>
 	      		
 	      </div>
-	      <div class="col-xs-5 right" style="width: 34%">
+	      <div class="col-xs-6" style="text-align:right " >
 	      		<div class="input-container">
 	      			<label for="dues">Due Date :</label>
 		      		<input type="date"  class="" ng-model="invoice.due" placeholder="Due Date" ng-disabled="printMode" ng-disabled="printMode" style="background: none;">
@@ -92,7 +92,7 @@
 	    <div id="items" class="items">
 	      <div class="row header">
 	        <div class="col-xs-1">&nbsp;</div>
-	        <div class="col-xs-5">Description</div>
+	        <div class="col-xs-5">Item</div>
 	        <div class="col-xs-2">Quantity</div>
 	        <div class="col-xs-2">Cost {{currencySymbol}}</div>
 	        <div class="col-xs-2 text-right">Total</div>
@@ -244,9 +244,10 @@
 					<!-- <div class="attach-note">
 						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
 					</div> -->
-					<a class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
+					<span class="text-danger" ng-show="emailForm.$invalid">Complete the form to sent mail.</span>
+					<button class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
 						Send
-					</span></a>
+					</span></button>
 				</div>
 			</form>
 		</div>

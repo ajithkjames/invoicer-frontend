@@ -36,9 +36,6 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
   $scope.notes   = false;
   $scope.terms   = false;
   $scope.logo = '';
-  $scope.to1='';
-  $scope.to='';
-  $scope.from='';
   $scope.message='';
   $scope.invoicefile='';
 
@@ -165,9 +162,12 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     $http({
         url: 'http://192.168.1.105:8000/pdf',
         method: "POST",
-        data: { 
-        "company" : $scope.invoice.company_info.content,
-        "customer" : $scope.invoice.customer_info.content,
+        data: {
+        "number":$scope.invoice.invoice_number, 
+        "from_text" : $scope.invoice.from_text,
+        "to_text" : $scope.invoice.to_text,
+        "company" : $scope.invoice.from,
+        "customer" : $scope.invoice.to,
         "logo":$scope.logo, 
         "items":$scope.invoice.items,
         "subtotal":$scope.subtotal,
@@ -194,6 +194,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
              var blob = new Blob([response.data], {type: 'application/pdf'});
              var fileURL = URL.createObjectURL(blob);
              var a = document.createElement("a");
+             document.body.appendChild(a);
              $scope.pdffile=fileURL;
             var fileName = "invoice.pdf";
             a.href = fileURL;

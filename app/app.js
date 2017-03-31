@@ -16,14 +16,8 @@ var invoices=angular.module('invoices',  [])
   tax1_titile:'Additional taxes(%)',
   tax1: 0.00,
   invoice_number: 1,
-  customer_info: {
-    content: '',
-    
-  },
-  company_info: {
-    content: '',
-    
-  },
+  from:'',
+  to:'',
   items:[
     { qty: 1, description: '', cost: 0 }
   ]
