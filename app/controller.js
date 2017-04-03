@@ -66,6 +66,8 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
           method: 'POST',
           url: 'http://192.168.1.105:8000/send',
           data:{
+          "date":$scope.invoice.date,
+          "due":$scope.invoice.due,
           "to": $scope.to,
           "from": $scope.from,
           "message": $scope.message,
@@ -98,20 +100,16 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
       // SEND THE data.
       $http(request)
           .then(function(success) {
-          console.log("SUCCESS " + JSON.stringify(success));
+          
           }, function(error) {
-          console.log("ERROR " + JSON.stringify(error));
+          
           });
   }
 
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    if ($scope.invoice.items.length < 12 ){
       $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
-    }
-    else{
-      window.alert("Can't add more items!");
-    }
+  
   }
   $scope.addAdditionalTax=function() {
      $scope.additionalTax   = true;
@@ -177,6 +175,8 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
         method: "POST",
         data: {
         "number":$scope.invoice.invoice_number, 
+        "date":$scope.invoice.date,
+        "due":$scope.invoice.due,
         "from_text" : $scope.invoice.from_text,
         "to_text" : $scope.invoice.to_text,
         "company" : $scope.invoice.from,

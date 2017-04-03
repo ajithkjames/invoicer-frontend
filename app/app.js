@@ -1,4 +1,4 @@
-var invoices=angular.module('invoices',  [])
+var invoices=angular.module('invoices',  ["angular-autogrow",'720kb.datepicker'])
 
 // The default logo for the invoice
 .constant('DEFAULT_LOGO', 'assets/images/logo.jpg')
