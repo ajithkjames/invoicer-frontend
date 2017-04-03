@@ -106,11 +106,11 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // Adds an item to the invoice's items
   $scope.addItem = function() {
-    if ($scope.invoice.items.length < 13 ){
+    if ($scope.invoice.items.length < 12 ){
       $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
     }
     else{
-      window.alert("Can't add more than 10 items!");
+      window.alert("Can't add more items!");
     }
   }
   $scope.addAdditionalTax=function() {
@@ -204,15 +204,15 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
        
     })
    .then(function successCallback(response) {
-             var blob = new Blob([response.data], {type: 'application/pdf'});
-             var fileURL = URL.createObjectURL(blob);
-             var a = document.createElement("a");
-             document.body.appendChild(a);
-             $scope.pdffile=fileURL;
-            var fileName = "invoice.pdf";
-            a.href = fileURL;
-            a.download = fileName;
-                a.click();
+         var blob = new Blob([response.data], {type: 'application/pdf'});
+         var fileURL = URL.createObjectURL(blob);
+         var a = document.createElement("a");
+         document.body.appendChild(a);
+         $scope.pdffile=fileURL;
+         var fileName = "invoice.pdf";
+         a.href = fileURL;
+         a.download = fileName;
+         a.click();
         }, function errorCallback(response) {   
         });
   }
@@ -266,7 +266,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
 $scope.setLogo = function(logo) {
     localStorage['logo'] = logo;
-      $scope.logo = logo ;
+    $scope.logo = logo ;
   };
   // Clears the local storage
   $scope.clearLocalStorage = function() {
