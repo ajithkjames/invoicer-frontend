@@ -53,7 +53,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
       var logo = LocalStorage.getLogo();
       $scope.logo = logo ? logo : '';
       var currency = LocalStorage.getCurrency();
-      $scope.currencySymbol = currency ;
+      $scope.currencySymbol = currency  ? currency : '\u20B9';
       console.log($scope.currencySymbol)
     }();
 
@@ -228,7 +228,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // Calculates the sub total of the invoice
   $scope.invoiceSubTotal = function() {
-    localStorage['currencySymbol'] = $scope.currencySymbol;
+    localStorage['currencySymbol'] = $scope.currencySymbol; 
     var total = 0.00;
     angular.forEach($scope.invoice.items, function(item, key){
       total += (item.qty * item.cost);
