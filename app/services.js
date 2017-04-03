@@ -17,6 +17,20 @@ invoices.service('LocalStorage', [function() {
     }
   };
 
+    // Returns true if there is a currency stored
+  var hasCurrency = function() {
+    return !!localStorage['currencySymbol'];
+  };
+
+  // Returns a stored logo (false if none is stored)
+  Service.getCurrency = function() {
+    if (hasCurrency()) {
+      return localStorage['currencySymbol'];
+    } else {
+      return false;
+    }
+  };
+
   Service.setLogo = function(logo) {
     localStorage['logo'] = logo;
     

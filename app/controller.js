@@ -52,6 +52,9 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     !function() {
       var logo = LocalStorage.getLogo();
       $scope.logo = logo ? logo : '';
+      var currency = LocalStorage.getCurrency();
+      $scope.currencySymbol = currency ;
+      console.log($scope.currencySymbol)
     }();
 
     $scope.availableCurrencies = Currency.all();
@@ -108,6 +111,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // Adds an item to the invoice's items
   $scope.addItem = function() {
+    localStorage['currencySymbol'] = $scope.currencySymbol;
       $scope.invoice.items.push({ qty:1, cost:0, description:"",$$hashKey:(0|Math.random()*9e6).toString(36)});
   
   }
@@ -224,6 +228,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
 
   // Calculates the sub total of the invoice
   $scope.invoiceSubTotal = function() {
+    localStorage['currencySymbol'] = $scope.currencySymbol;
     var total = 0.00;
     angular.forEach($scope.invoice.items, function(item, key){
       total += (item.qty * item.cost);
@@ -275,6 +280,7 @@ $scope.setLogo = function(logo) {
       $scope.invoice=angular.copy(DEFAULT_INVOICE);
       LocalStorage.clear();
       $scope.logo = '';
+      $scope.currencySymbol='\u20B9';
     }
   };
 
