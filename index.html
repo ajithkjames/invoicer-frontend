@@ -9,249 +9,241 @@
 	<script src="assets/js/jquery-3.2.0.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/angular.min.js"></script>
-    <script src="assets/js/html2canvas.js"></script>
-    <script src="assets/js/pdfmake.js"></script>
     <script src="assets/js/autogrow.js"></script>
     <script src="assets/js/angular-datepicker.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-route.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controller.js"></script>
-    <script src="app/services.js"></script>
-
-    
+    <script src="app/services.js"></script> 
   </head>
   <body ng-app="invoices" ng-controller="InvoiceCtrl" id="invoice">
-  <div >
-  <div class="container" id="printcontainer">
-  	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
-  	  <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="getpdf()">Download Invoice</a>
-  	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
-      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
-      <!-- <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="pdf()">Download</a> -->
-      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
-      <button href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printmodeon()">Switch To Print Mode</button>
-      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printmodeoff()">Back To Edit Mode</a>
-    </div >
-	  <div class="row papers col-xs-12" id="paper">
-	    <div class="row branding">
-	      <div class="col-xs-3">
-	        <div class="invoice-number-container">
-	          <label for="invoice-number">Invoice Number</label><input  ng-disabled="printMode" class="form-control" type="text" id="invoice-number" ng-model="invoice.invoice_number" />
-	        </div>
-	      </div><input type="file" id="imgInp"  ng-disabled="printMode">
-	      <div class="currency col-xs-3" ng-hide="printMode">
-	          <select ng-model='currencySymbol' ng-disabled="printMode" ng-options='currency.symbol as currency.name for currency in availableCurrencies' class="form-control" style="border: 1px solid #ccc;"></select>
-	       </div>
-	      <div class="col-xs-6" style="float: right;">
-		      <div id="logopresent" class="logo" ng-show="logo">
-		      	<button class="remove-logo"  ng-click="removeLogo()" ng-hide="printMode">
-					X
-				</button>
-		        
-		        <img ng-click="editLogo()"  id="company_logo" ng-src="{{ logo }}" alt="your image" height="100px" style="float: right;" />
-		        <div>
-		        </div>
-		      </div>
-		      <div id ="setlogo" class="logo-container" ng-hide="logo || printMode" ng-click="editLogo()">
-		      	<div class="placeholder">
-		      	<span > + Add Your Logo</span>
-		      	</div>
-		      </div>
-	      </div>
-	      
-	    </div>
-	    <div class="row infos">
-	      <div class="col-xs-4">
-	      	<div class="input-container">
-	      		<input type="text" class="form-control" ng-model="invoice.from_text" ng-disabled="printMode">
-	     		<textarea rows="4" id="to" class="limited form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.from" tabindex="15" required=""  style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
-	     		
-	     		</textarea>
-	     	</div>
+	  <div>
+		  <div class="container" id="printcontainer">
+		  	<div class="noPrint actions col-xs-12" data-html2canvas-ignore>
+		  	  <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="getpdf()">Download Invoice</a>
+		  	  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-show="printMode">Send Invoice</button>
+		      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printInfo()">Print</a>
+		      <a href="#" class="btn btn-primary" ng-hide="printMode" ng-click="clearLocalStorage()">Reset</a>
+		      <button href="#" class="btn btn-primary" ng-hide="printMode" ng-click="printmodeon()">Switch To Print Mode</button>
+		      <a href="#" class="btn btn-primary" ng-show="printMode" ng-click="printmodeoff()">Back To Edit Mode</a>
+		    </div >
+			  <div class="row papers col-xs-12" id="paper">
+			    <div class="row branding">
+			      <div class="col-xs-3">
+			        <div class="invoice-number-container">
+			          <label for="invoice-number">Invoice Number</label><input  ng-disabled="printMode" class="form-control" type="text" id="invoice-number" ng-model="invoice.invoice_number" />
+			        </div>
+			      </div><input type="file" id="imgInp"  ng-disabled="printMode">
+			      <div class="currency col-xs-3" ng-hide="printMode">
+			          <select ng-model='currencySymbol' ng-disabled="printMode" ng-options='currency.symbol as currency.name for currency in availableCurrencies' class="form-control" style="border: 1px solid #ccc;"></select>
+			       </div>
+			      <div class="col-xs-6" style="float: right;">
+				      <div id="logopresent" class="logo" ng-show="logo">
+				      	<button class="remove-logo"  ng-click="removeLogo()" ng-hide="printMode">
+							X
+						</button>
+				        
+				        <img ng-click="editLogo()"  id="company_logo" ng-src="{{ logo }}" alt="your image" height="100px" style="float: right;" />
+				        <div>
+				        </div>
+				      </div>
+				      <div id ="setlogo" class="logo-container" ng-hide="logo || printMode" ng-click="editLogo()">
+				      	<div class="placeholder">
+				      	<span > + Add Your Logo</span>
+				      	</div>
+				      </div>
+			      </div>
+			      
+			    </div>
+			    <div class="row infos">
+			      <div class="col-xs-4">
+			      	<div class="input-container">
+			      		<input type="text" class="form-control" ng-model="invoice.from_text" ng-disabled="printMode">
+			     		<textarea rows="4" id="to" class="limited form-control ng-required ng-touched" placeholder="Who is this invoice to ? (required)" ng-model="invoice.from" tabindex="15" required=""  style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
+			     		
+			     		</textarea>
+			     	</div>
 
-	      </div>
-	      <div class="col-xs-4 right">
-	      	<div class="input-container">
-	      		<input type="text" class="form-control" ng-model="invoice.to_text" style="float: left;text-align: left;" ng-disabled="printMode">
-	     		<textarea rows="4" id="from" class="limited form-control ng-required ng-touched " placeholder="Who is this invoice from? (required)" ng-model="invoice.to" tabindex="15" required="" style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
-	     		
-	     		</textarea>
-	     	</div>
-	      </div>
-	      <div class="col-xs-6">
-		      <div class="input-container">
-		      	<label for="dates">Date :</label>
-		      <datepicker date-format="yyyy-MM-dd">
-		      		<input type="date"  class="" ng-model="invoice.date" placeholder="Date" ng-disabled="printMode" ng-disabled="printMode" style="background: none;">
-		      		</datepicker>
-	      		</div>
-	      		
-	      </div>
-	      <div class="col-xs-6" style="text-align:right " >
-	      		<div class="input-container">
-	      			<label for="dues">Due Date :</label>
-	      			<datepicker date-format="yyyy-MM-dd" style="text-align: right">
-		      		<input type="date"  class="" ng-model="invoice.due" placeholder="Due Date" ng-disabled="printMode" ng-disabled="printMode" style="background: none;text-align: right">
-		      		</datepicker>
-	      		</div>
-	      </div>
-	    </div>
-	    <div id="items" class="items">
-	      <div class="row header">
-	        <div class="col-xs-1">&nbsp;</div>
-	        <div class="col-xs-5">Item</div>
-	        <div class="col-xs-2">Quantity</div>
-	        <div class="col-xs-2">Cost {{currencySymbol}}</div>
-	        <div class="col-xs-2 text-right">Total</div>
-	      </div>
-	      <div class="row invoice-item " ng-repeat="item in invoice.items" ng-animate="'slide-down'">
-	        <div class="col-xs-1 remove-item-container">
-	          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">X</a>
-	        </div>
-	        <div class="col-xs-5 input-container ">
-	          <input ng-model="item.description" placeholder="Description of Service or Product.." class="form-control"" ng-disabled="printMode"/>
-	        </div>
-	        <div class="col-xs-2 input-container">
-	          <input type="number" min="0" ng-model="item.qty" value="1" size="4" ng-required  placeholder="Quantity" class="form-control" ng-disabled="printMode"/>
-	        </div>
-	        <div class="col-xs-2 input-container">
-	          <input type="number" min="0" ng-model="item.cost" value="0.00" ng-required " size="6" placeholder="Cost" class="form-control" ng-disabled="printMode"/>
-	        </div>
-	        <div class="col-xs-2 text-right input-container">
-	          {{item.cost * item.qty | currency: currencySymbol}}
-	        </div>
-	      </div>
-	      <div class="row invoice-item">
-	        <div class="col-xs-12 add-item-container" ng-hide="printMode">
-	          <a class="btn btn-primary" href ng-click="addItem()" >+ Add Item</a>
-	        </div>
-	      </div>
-	      <div class="row totals">
-	        <div class="col-xs-10 text-right">Sub Total</div>
-	        <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
-	      </div>
-	      <div class="row totals">
-	        <div class="col-xs-10 text-right"><input  class="form-control" ng-model="invoice.tax_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax"  style="width:63px; display: inline;" ng-disabled="printMode"><br/>
-	        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax || printMode || invoice.tax1" >+ Add Additional Tax</a>
-	        </div>
-	        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
-	      </div>
-	      <div class="row totals" ng-show="additionalTax || invoice.tax1">
-	        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="removeAdditionalTax()" class="btn btn-warning">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax1" style="width:63px; display: inline;" ng-disabled="printMode">
-	        </div>
-	        <div class="col-xs-2 text-right">{{calculateTax1() | currency: currencySymbol}}</div>
-	      </div>
-	      <div class="row totals">
-	        <div class="col-xs-10 text-right" >Grand Total:</div>
-	        <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
-	      </div>
-	      </div>
-	    <div class="terms row">
-    		<a class="btn" href ng-click="addNotes() " ng-hide="invoice.notes || printMode || notes" >+ Add Notes</a>
-	    	<div class="col-xs-12" ng-show="invoice.notes || notes">
-		       <div class="input-container">
-		       <a href ng-hide="printMode" ng-click="removeNotes()" class="btn btn-warning">X</a>
-		       Notes :
-		      	<textarea autogrow  class="note form-control ng-required ng-touched" ng-model="invoice.notes"  style=" resize: none;" ng-disabled="printMode" style="font-size: 14px"></textarea>
-	      		</div>
-	      	</div>
-	      	<br/>
-	      	<a class="btn" href ng-click="addTerms()" ng-hide="invoice.terms || terms || printMode" >+ Add Terms</a>
-	      	<div class="col-xs-12" ng-show="invoice.terms || terms"> 
-	      		<div class="input-container">
-	      		<a href ng-hide="printMode" ng-click="removeTerms()" class="btn btn-warning">X</a>
-	      		Terms :
-		      	<textarea autogrow class="note form-control ng-required ng-touched" ng-model="invoice.terms"  style="resize: none; margin-bottom: 20px; " ng-disabled="printMode" required=""></textarea>
-      			</div>
-	        </div>
-	    </div>
+			      </div>
+			      <div class="col-xs-4 right">
+			      	<div class="input-container">
+			      		<input type="text" class="form-control" ng-model="invoice.to_text" style="float: left;text-align: left;" ng-disabled="printMode">
+			     		<textarea rows="4" id="from" class="limited form-control ng-required ng-touched " placeholder="Who is this invoice from? (required)" ng-model="invoice.to" tabindex="15" required="" style=" height: 130px; resize: none;" ng-disabled="printMode" maxlength="115">
+			     		
+			     		</textarea>
+			     	</div>
+			      </div>
+			      <div class="col-xs-6">
+				      <div class="input-container">
+				      	<label for="dates">Date :</label>
+				      <datepicker date-format="yyyy-MM-dd">
+				      		<input type="date"  class="" ng-model="invoice.date" placeholder="Date" ng-disabled="printMode" ng-disabled="printMode" style="background: none;">
+				      		</datepicker>
+			      		</div>
+			      		
+			      </div>
+			      <div class="col-xs-6" style="text-align:right " >
+			      		<div class="input-container">
+			      			<label for="dues">Due Date :</label>
+			      			<datepicker date-format="yyyy-MM-dd" style="text-align: right">
+				      		<input type="date"  class="" ng-model="invoice.due" placeholder="Due Date" ng-disabled="printMode" ng-disabled="printMode" style="background: none;text-align: right">
+				      		</datepicker>
+			      		</div>
+			      </div>
+			    </div>
+			    <div id="items" class="items">
+			      <div class="row header">
+			        <div class="col-xs-1">&nbsp;</div>
+			        <div class="col-xs-5">Item</div>
+			        <div class="col-xs-2">Quantity</div>
+			        <div class="col-xs-2">Cost {{currencySymbol}}</div>
+			        <div class="col-xs-2 text-right">Total</div>
+			      </div>
+			      <div class="row invoice-item " ng-repeat="item in invoice.items" ng-animate="'slide-down'">
+			        <div class="col-xs-1 remove-item-container">
+			          <a href ng-hide="printMode" ng-click="removeItem(item)" class="btn btn-danger">X</a>
+			        </div>
+			        <div class="col-xs-5 input-container ">
+			          <input ng-model="item.description" placeholder="Description of Service or Product.." class="form-control"" ng-disabled="printMode"/>
+			        </div>
+			        <div class="col-xs-2 input-container">
+			          <input type="number" min="0" ng-model="item.qty" value="1" size="4" ng-required  placeholder="Quantity" class="form-control" ng-disabled="printMode"/>
+			        </div>
+			        <div class="col-xs-2 input-container">
+			          <input type="number" min="0" ng-model="item.cost" value="0.00" ng-required " size="6" placeholder="Cost" class="form-control" ng-disabled="printMode"/>
+			        </div>
+			        <div class="col-xs-2 text-right input-container">
+			          {{item.cost * item.qty | currency: currencySymbol}}
+			        </div>
+			      </div>
+			      <div class="row invoice-item">
+			        <div class="col-xs-12 add-item-container" ng-hide="printMode">
+			          <a class="btn btn-primary" href ng-click="addItem()" >+ Add Item</a>
+			        </div>
+			      </div>
+			      <div class="row totals">
+			        <div class="col-xs-10 text-right">Sub Total</div>
+			        <div class="col-xs-2 text-right">{{invoiceSubTotal() | currency: currencySymbol}}</div>
+			      </div>
+			      <div class="row totals">
+			        <div class="col-xs-10 text-right"><input  class="form-control" ng-model="invoice.tax_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax"  style="width:63px; display: inline;" ng-disabled="printMode"><br/>
+			        	<a class="btn" href ng-click="addAdditionalTax() " ng-hide="additionalTax || printMode || invoice.tax1" >+ Add Additional Tax</a>
+			        </div>
+			        <div class="col-xs-2 text-right">{{calculateTax() | currency: currencySymbol}}</div>
+			      </div>
+			      <div class="row totals" ng-show="additionalTax || invoice.tax1">
+			        <div class="col-xs-10 text-right"><a href ng-hide="printMode" ng-click="removeAdditionalTax()" class="btn btn-warning">X</a><input  class="form-control" ng-model="invoice.tax1_titile"  style="width:150px; display: inline;" ng-disabled="printMode">: <input  type="number" min="0" class="form-control" ng-model="invoice.tax1" style="width:63px; display: inline;" ng-disabled="printMode">
+			        </div>
+			        <div class="col-xs-2 text-right">{{calculateTax1() | currency: currencySymbol}}</div>
+			      </div>
+			      <div class="row totals">
+			        <div class="col-xs-10 text-right" >Grand Total:</div>
+			        <div class="col-xs-2 text-right">{{calculateGrandTotal() | currency: currencySymbol}}</div>
+			      </div>
+			      </div>
+			    <div class="terms row">
+		    		<a class="btn" href ng-click="addNotes() " ng-hide="invoice.notes || printMode || notes" >+ Add Notes</a>
+			    	<div class="col-xs-12" ng-show="invoice.notes || notes">
+				       <div class="input-container">
+				       <a href ng-hide="printMode" ng-click="removeNotes()" class="btn btn-warning">X</a>
+				       Notes :
+				      	<textarea autogrow  class="note form-control ng-required ng-touched" ng-model="invoice.notes"  style=" resize: none;" ng-disabled="printMode" style="font-size: 14px"></textarea>
+			      		</div>
+			      	</div>
+			      	<br/>
+			      	<a class="btn" href ng-click="addTerms()" ng-hide="invoice.terms || terms || printMode" >+ Add Terms</a>
+			      	<div class="col-xs-12" ng-show="invoice.terms || terms"> 
+			      		<div class="input-container">
+			      		<a href ng-hide="printMode" ng-click="removeTerms()" class="btn btn-warning">X</a>
+			      		Terms :
+				      	<textarea autogrow class="note form-control ng-required ng-touched" ng-model="invoice.terms"  style="resize: none; margin-bottom: 20px; " ng-disabled="printMode" required=""></textarea>
+		      			</div>
+			        </div>
+			    </div>
+			  </div>
+
+
+			   <!-- Modal -->
+		  <div class="modal fade" id="myModal" role="dialog">
+		    <div class="modal-dialog">
+		    
+		      <!-- Modal content-->
+		        <div class="modal-content" modal-transclude="">
+		        	<form name="emailForm" ng-submit="send(invoice,email)" class="email-form ">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">
+								Send Invoice
+							</h4>
+						</div>
+						<div class="modal-body form-horizontal">
+							<p class="alert alert-danger ng-binding ng-hide" ng-show="error"></p>
+
+							<div class="form-group">
+								<label class="control-label col-sm-3">
+									To <span class="required">*</span>
+								</label>
+								<div class="col-sm-9">
+									<div >
+										<span class="text-danger" ng-show="emailForm.to.$touched && emailForm.to.$invalid">A valid email is required here.</span>
+										<input type="email" class="modelinput" placeholder="Your client's email address" name="to" ng-model="to" required>
+									</div>
+								</div>
+								<div class="col-sm-9 col-sm-offset-3 no-spam-label">
+									<span class="glyphicon glyphicon-lock"></span> We promise to never spam your client's email address. We hate spam just as much as you.
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-3">
+									From <span class="required">*</span>
+								</label>
+								<div class="col-sm-9">
+									<div>
+										<span class="text-danger" ng-show="emailForm.from.$touched && emailForm.from.$invalid">A valid email is required here.</span>
+										<input type="email" class="modelinput" placeholder="Your email address" name="from" ng-model="from" required="">
+									</div>
+								</div>
+								<div class="col-sm-9 col-sm-offset-3 delivery-confirmation-label">
+									You will receive a delivery confirmation with a copy of your invoice.
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-3">Subject</label>
+								<div class="col-sm-9 form-control-static ">
+									Invoice from {{from}} <span ng-show="invoice.number" class="ng-binding">: # 8</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="control-label col-sm-3">
+									Message <span class="required">*</span>
+								</label>
+								<div class="col-sm-9">
+									<div >
+										<span class="text-danger" ng-show="emailForm.message.$touched && emailForm.message.$invalid">Type a message to be sent.</span>
+										<textarea ng-model="message" name="message" class="modelinput" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
+										</textarea>
+									</div>
+								</div>
+							</div>
+						    
+						</div>
+						<div class="modal-footer">
+							<div class="attach-note">
+								<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
+							</div>
+							<span class="text-danger" ng-show="emailForm.$invalid">Complete the form to sent mail.</span>
+							<button class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
+								Send
+							</span></button>
+						</div>
+					</form>
+				</div>
+		    </div>  
+		  </div>
+		  </div>
 	  </div>
-
-
-	   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-        <div class="modal-content" modal-transclude="">
-        	<form name="emailForm" ng-submit="send(invoice,email)" class="email-form ">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">
-						Send Invoice
-					</h4>
-				</div>
-				<div class="modal-body form-horizontal">
-					<p class="alert alert-danger ng-binding ng-hide" ng-show="error"></p>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">
-							To <span class="required">*</span>
-						</label>
-						<div class="col-sm-9">
-							<div >
-								<span class="text-danger" ng-show="emailForm.to.$touched && emailForm.to.$invalid">A valid email is required here.</span>
-								<input type="email" class="modelinput" placeholder="Your client's email address" name="to" ng-model="to" required>
-							</div>
-						</div>
-						<div class="col-sm-9 col-sm-offset-3 no-spam-label">
-							<span class="glyphicon glyphicon-lock"></span> We promise to never spam your client's email address. We hate spam just as much as you.
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">
-							From <span class="required">*</span>
-						</label>
-						<div class="col-sm-9">
-							<div>
-								<span class="text-danger" ng-show="emailForm.from.$touched && emailForm.from.$invalid">A valid email is required here.</span>
-								<input type="email" class="modelinput" placeholder="Your email address" name="from" ng-model="from" required="">
-							</div>
-						</div>
-						<div class="col-sm-9 col-sm-offset-3 delivery-confirmation-label">
-							You will receive a delivery confirmation with a copy of your invoice.
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">Subject</label>
-						<div class="col-sm-9 form-control-static ">
-							Invoice from {{from}} <span ng-show="invoice.number" class="ng-binding">: # 8</span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="control-label col-sm-3">
-							Message <span class="required">*</span>
-						</label>
-						<div class="col-sm-9">
-							<div >
-								<span class="text-danger" ng-show="emailForm.message.$touched && emailForm.message.$invalid">Type a message to be sent.</span>
-								<textarea ng-model="message" name="message" class="modelinput" placeholder="A friendly message to your client" expanding-textarea="" required="" style="border: 1px solid #ccc;height: 150px;">
-								</textarea>
-							</div>
-						</div>
-					</div>
-				    
-				</div>
-				<div class="modal-footer">
-					<div class="attach-note">
-						<span class="glyphicon glyphicon-paperclip"></span> Invoice Attached
-					</div>
-					<span class="text-danger" ng-show="emailForm.$invalid">Complete the form to sent mail.</span>
-					<button class="btn btn-primary" ng-disabled="emailForm.$invalid" ng-click="sendInvoice()" value="Upload"" data-toggle="modal"><span>
-						Send
-					</span></button>
-				</div>
-			</form>
-		</div>
-    </div>  
-  </div>
-  </div>
-	  
-  </div>
- 
 </body>
 <script type="text/javascript">
 	function limitTextareaLine(e) {

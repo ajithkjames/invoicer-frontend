@@ -54,7 +54,6 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
       $scope.logo = logo ? logo : '';
       var currency = LocalStorage.getCurrency();
       $scope.currencySymbol = currency  ? currency : '\u20B9';
-      console.log($scope.currencySymbol)
     }();
 
     $scope.availableCurrencies = Currency.all();
@@ -149,27 +148,6 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
     // angular.element('#imgInp').trigger('click');
 
     document.getElementById('imgInp').click();
-  };
-
-  //Download the invoice as pdf
-  $scope.pdf= function() {
-
-  html2canvas(document.getElementById('invoice'), {
-            onrendered: function (canvas) {
-                var data = canvas.toDataURL();
-                var docDefinition = {
-                    
-                    content: [{
-                        image: data,
-                        width: 580,
-                       
-                    }],
-                  pageSize: 'A4',
-                  pageMargins: [ 20, 0, 10, 20 ],
-                };
-                pdfMake.createPdf(docDefinition).download("invoice.pdf");
-            }
-        });
   };
 
   $scope.getpdf = function() {
