@@ -286,3 +286,9 @@ div.container{
 input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-calendar-picker-indicator {
    display: none;
 }
+#note{
+  font-size: 14px;
+}
+#terms{
+  font-size: 14px;
+}
