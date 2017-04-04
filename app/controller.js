@@ -26,8 +26,8 @@ invoices.directive('ngFiles', ['$parse', function ($parse) {
   }
 });
 
-invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency',
-  function($scope, $sce, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency) {
+invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE', 'DEFAULT_LOGO', 'LocalStorage', 'Currency','url',
+  function($scope, $sce, $http, DEFAULT_INVOICE, DEFAULT_LOGO, LocalStorage, Currency,url) {
 
   // Set defaults
   $scope.currencySymbol = '\u20B9';
@@ -67,7 +67,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
       window.location.reload();
       var request = {
           method: 'POST',
-          url: 'http://192.168.1.105:8000/send',
+          url: url+'/send',
           data:{
           "date":$scope.invoice.date,
           "due":$scope.invoice.due,
@@ -175,7 +175,7 @@ invoices.controller('InvoiceCtrl', ['$scope','$sce', '$http', 'DEFAULT_INVOICE',
   $scope.getpdf = function() {
 
     $http({
-        url: 'http://192.168.1.105:8000/pdf',
+        url: url+'/pdf',
         method: "POST",
         data: {
         "number":$scope.invoice.invoice_number, 
