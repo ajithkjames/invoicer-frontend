@@ -1,6 +1,6 @@
 # An Invoice Generator App in AngularJS
 
-This an angularJs app for invoice generation and mailing the generated invoice in pdf format.
+This is an angularJs app for invoice generation and mailing the generated invoice in pdf format.
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ cd invoice-generator-api
 
 pip install -r requirements.txt
 
-python manage.py runserver
+python manage.py runserver 8000
 
 ```
 
@@ -30,7 +30,7 @@ Clone this repository to your local machine using these commands,
 git clone https://ajithspark@bitbucket.org/ajithspark/invoice-generator.git
 ```
 
-Open the project and set the API base url in the app/app.js file,
+Open the project and edit the API base url in the app/app.js file,
 
 change this line,
 ```
